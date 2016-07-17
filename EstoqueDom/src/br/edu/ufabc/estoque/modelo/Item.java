@@ -13,14 +13,9 @@ public class Item {
 	
 	
 
-/**
- * Construtor total
- * @param id
- * @param nome
- * @param quantidade
- * @param quantidadeCrítica
- * @param emFalta
- */
+
+//=================================================Construtores===================================================
+
 	public Item(long id, String nome, double quantidade, double quantidadeCrítica, boolean emFalta) {
 		super();
 		this.id = id;
@@ -28,19 +23,11 @@ public class Item {
 		this.quantidade = quantidade;
 		this.quantidadeCrítica = quantidadeCrítica;
 		this.emFalta = emFalta;
-		
 		//ao criar o item, verifica pela quantidade crítica e quantidade normal se ele está em falta
 		this.checaQuantidade();
 	}
 
-	
-	/**
-	 * Construtores
-	 * @param nome
-	 * @param quantidade
-	 * @param quantidadeCrítica
-	 * @param emFalta
-	 */
+
 	public Item(String nome, double quantidade, double quantidadeCrítica, boolean emFalta) {
 		super();
 		this.nome = nome;
@@ -50,35 +37,89 @@ public class Item {
 		//ao criar o item, verifica pela quantidade crítica e quantidade normal se ele está em falta
 		this.checaQuantidade();
 	}
-	
-	/**
-	 * Construtor Nulo
-	 */
-	public Item() {super();}
-	
-	
 
+	public Item(String nome, double quantidade, double quantidadeCrítica) {
+		this(nome, quantidade, quantidadeCrítica, false);
+		this.checaQuantidade();
+	}
 	
-	//Acrescentar e Remover Quantidades ===========================================
+	public Item(String nome, double quantidade) {
+		this(nome, quantidade, quantidade);
+	}
+	
+	public Item(String nome) {
+		this(nome, 1.0);
+	}
+	
+	
+	public Item() {
+		this("Novo Item");
+	}
+	
+	
+	//=====================Acrescentar e Remover Quantidades ===========================================
 	
 	/**
-	 * Aumenta a Quantidade do item
+	 * Aumenta a Quantidade do item e checa a quantidade para ver se está em falta.
 	 * @param valor Esse é o valor que será aumentado. Se estiver ausente, é 1.
 	 */
 	
-	public void aumentaQuantidade(int valor){quantidade = quantidade+valor;}
-	public void aumentaQuantidade(){aumentaQuantidade(1);}
-	
+	public void aumentaQuantidade(int valor)	{
+		quantidade = quantidade+valor;
+		this.checaQuantidade();
+		}
 	
 	/**
-	 * Reduza Quantidade do item
+	 * Reduz a Quantidade do item e checa a quantidade para ver se está em falta.
 	 * @param valor Esse é o valor que será aumentado. Se estiver ausente, é 1.
 	 */
 	
-	public void reduzQuantidade(int valor){quantidade = quantidade-valor;}
+	public void reduzQuantidade(int valor)	{
+		quantidade = quantidade-valor;
+		this.checaQuantidade();
+		}
+	
 	public void reduzQuantidade(){reduzQuantidade(1);}
 	
+	//===================== UTILITÁRIOS ===========================================
+	
+	public void checaQuantidade()	{	
+		if(quantidadeCrítica>quantidade) 
+		{
+			setEmFalta(true);
+		}
+		else
+		{
+			setEmFalta(false);
+		}
+	}
+	
+	
+	public String toString()	{
+		String descricao = nome+"\t"+quantidade+
+				"\t"+ quantidadeCrítica+"\t"+ emFalta;
+		return descricao;
+	}
+	
+	/**	PARA EXIBIÇÃO
+	 * Recupera as informações do item e concatena num texto formatado.
+	 * 
+	 * @return texto concatenado com as informações do item.
+	 */
+	public String paraExibicao()	{
+		String textoDeSaída = "";
+		String formato = "%32s%15s%15s%15s";
+		
+		if(emFalta){
+			textoDeSaída=textoDeSaída.format(formato, nome,quantidade,quantidadeCrítica,"Sim");
+		}
+		else{
+			textoDeSaída=textoDeSaída.format(formato, nome,quantidade,quantidadeCrítica,"Não");
+		}
+		return textoDeSaída;
+	}
 
+		
 	//GETTERS e SETTERS ========================================================
 	
 	
@@ -113,16 +154,6 @@ public class Item {
 		this.emFalta = emFalta;
 	}
 	
-	public void checaQuantidade()
-	{	
-		if(quantidadeCrítica>quantidade) 
-		{
-			setEmFalta(false);
-		}
-		else
-		{
-			setEmFalta(true);
-		}
-	}
+	
 	
 }

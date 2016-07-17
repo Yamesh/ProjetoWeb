@@ -1,4 +1,4 @@
-package br.edu.ufabc.progradweb.filtro;
+package br.edu.ufabc.estoque.filtro;
 
 import java.io.IOException;
 

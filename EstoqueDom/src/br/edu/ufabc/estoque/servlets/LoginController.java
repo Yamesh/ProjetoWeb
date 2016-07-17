@@ -1,4 +1,4 @@
-package br.edu.ufabc.progradweb.servlet;
+package br.edu.ufabc.estoque.servlet;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-import br.edu.ufabc.progradweb.acao.Acao;
+import br.edu.ufabc.estoque.acao.Acao;
 
 
 
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet{
 			String opcao = req.getParameter("opcao");
 		
 		//Define que classe será chamada, baseado na opcao	
-			String nomeDaClasse = "br.edu.ufabc.progradweb.acao." + opcao;
+			String nomeDaClasse = "br.edu.ufabc.estoque.acao." + opcao;
 		
 			try {
 				Class<?> classe = Class.forName(nomeDaClasse);

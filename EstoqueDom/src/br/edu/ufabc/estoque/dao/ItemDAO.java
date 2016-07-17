@@ -27,7 +27,7 @@ public class ItemDAO {
 		}
 		
 	public ItemDAO(Connection conexao) {
-		this.connection = conexao.getConnection();
+		this.connection = conexao;
 	}
 	
 	

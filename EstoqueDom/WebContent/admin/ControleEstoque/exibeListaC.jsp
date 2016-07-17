@@ -13,8 +13,8 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
-	<link rel="stylesheet" type="text/css" href="../css/tabela.css">
+	<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
+	<link rel="stylesheet" type="text/css" href="../../css/tabela.css">
 	
 	<title>Lista</title>
 </head>
@@ -42,10 +42,6 @@
 	
 			<c:forEach var="item" items="${bd.lista}">
 				<c:set var="teste" scope="session" value = "${item.quantidadeCrítica - item.quantidade}" /><br>
-				QtdeCrítica ${item.quantidadeCrítica}
-				Qtde ${item.quantidade}
-				e ${teste}
-				
 				<c:if test="${teste>0}">
 					 <tr>
 					 	<td>${item.nome}</td>

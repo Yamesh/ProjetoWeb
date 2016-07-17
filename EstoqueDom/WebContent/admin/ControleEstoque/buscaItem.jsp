@@ -2,12 +2,17 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- --------------------importações-------------------- -->
+<%@ page import="br.edu.ufabc.estoque.modelo.Item" %>
+<!-- --------------------/importações-------------------- -->
+
 <html>
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
-	<link rel="stylesheet" type="text/css" href="../css/tabela.css">
+	<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
+	<link rel="stylesheet" type="text/css" href="../../css/tabela.css">
 	
 	<title>Busca</title>
 </head>

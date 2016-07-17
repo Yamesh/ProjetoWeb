@@ -1,15 +1,14 @@
-package br.edu.ufabc.progradweb.servlet;
+package br.edu.ufabc.estoque.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.ufabc.progradweb.acao.LogoutUsuario;
+import br.edu.ufabc.estoque.acao.LogoutUsuario;
 
 @WebServlet("/logout")
 public class LogoutController extends HttpServlet {

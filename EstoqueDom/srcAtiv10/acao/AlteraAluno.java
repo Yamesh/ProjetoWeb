@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.ufabc.estoque.dao.ItemDAO;
 import br.edu.ufabc.progradweb.dao.AlunoDAO;
 import br.edu.ufabc.progradweb.modelo.Aluno;
 
@@ -33,16 +34,15 @@ public void executa(HttpServletRequest req, HttpServletResponse resp)
 	aluno.setId(longId);
 	
 	// Cria alunoDAO com a conexao anterior
-				//1 :> Obtem a conexão do FiltroBD;
-		Connection conexao = (Connection) req.getAttribute("conexao");
-		AlunoDAO dao = new AlunoDAO(conexao);
-		dao.altera(aluno);
+			//1 :> Obtem a conexão do FiltroBD;
+			Connection conexao = (Connection) req.getAttribute("conexao");
+			ItemDAO dao = new ItemDAO(conexao);
+			dao.altera(item);
 
-		req.setAttribute("msg", "Aluno: " + aluno.getNome()
-		+ " alterado com sucesso!");
-		RequestDispatcher rd = req.getRequestDispatcher("/admin/sucesso.jsp");
-		rd.forward(req, resp);
-
+			req.setAttribute("msg", "Item: " + item.getNome()
+			+ " alterado com sucesso!");
+			RequestDispatcher rd = req.getRequestDispatcher("/admin/sucesso.jsp");
+			rd.forward(req, resp);
 	
 	}
 }

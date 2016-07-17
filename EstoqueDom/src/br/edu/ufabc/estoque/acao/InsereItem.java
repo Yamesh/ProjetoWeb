@@ -1,6 +1,9 @@
 package br.edu.ufabc.estoque.acao;
 
 
+import java.sql.Connection;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +14,7 @@ import br.edu.ufabc.estoque.modelo.Item;
 
 public class InsereItem implements Acao {
 	
-public String executa(HttpServletRequest req, HttpServletResponse resp)
+public void executa(HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 		
 		// obtem parametros do request
@@ -24,12 +27,17 @@ public String executa(HttpServletRequest req, HttpServletResponse resp)
 		// instancia objeto Item
 		Item item = new Item(nome,qtde,qtdeC,emFalta);
 
-		ItemDAO dao = new ItemDAO();
+		// Cria alunoDAO com a conexao anterior
+		//1 :> Obtem a conexão do FiltroBD;
+		Connection conexao = (Connection) req.getAttribute("conexao");
+		ItemDAO dao = new ItemDAO(conexao);
 		dao.insere(item);
 
-		//Define o texto de saída " _________ com sucesso" que o Controller enviará para sucesso
-		String saida = "Item: "+item.getNome()+" inserido com sucesso!";
-		return saida;
+		req.setAttribute("msg", "Item: " + item.getNome()
+		+ " inserido com sucesso!");
+		RequestDispatcher rd = req.getRequestDispatcher("/admin/sucesso.jsp");
+		rd.forward(req, resp);
+
 		
 	}
 }

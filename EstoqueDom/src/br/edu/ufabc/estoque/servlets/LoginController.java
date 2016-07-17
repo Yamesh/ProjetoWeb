@@ -1,4 +1,4 @@
-package br.edu.ufabc.estoque.servlet;
+package br.edu.ufabc.estoque.servlets;
 
 import java.io.IOException;
 

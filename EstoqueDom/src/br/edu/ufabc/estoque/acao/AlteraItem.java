@@ -1,6 +1,9 @@
 package br.edu.ufabc.estoque.acao;
 
 
+import java.sql.Connection;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +14,7 @@ import br.edu.ufabc.estoque.dao.ItemDAO;
 
 public class AlteraItem implements Acao {
 	
-public String executa(HttpServletRequest req, HttpServletResponse resp)
+public void executa(HttpServletRequest req, HttpServletResponse resp)
 			throws Exception {
 	
 	// obtem parametros do request
@@ -29,12 +32,17 @@ public String executa(HttpServletRequest req, HttpServletResponse resp)
 	Item item = new Item(longId,nome,qtde,qtdeC,emFalta);
 
 
-		ItemDAO dao = new ItemDAO();
-		dao.altera(item);
+	// Cria alunoDAO com a conexao anterior
+	//1 :> Obtem a conexão do FiltroBD;
+	Connection conexao = (Connection) req.getAttribute("conexao");
+	ItemDAO dao = new ItemDAO(conexao);
+	dao.altera(item);
 
-	//Define o texto de saída " alterado com sucesso" que o Controller enviará para sucesso
-	String saida = "Item: "+item.getNome()+" alterado com sucesso!";
-	return saida;
+	req.setAttribute("msg", "Item: " + item.getNome()
+	+ " alterado com sucesso!");
+	RequestDispatcher rd = req.getRequestDispatcher("/admin/sucesso.jsp");
+	rd.forward(req, resp);
+
 	
 	}
 }

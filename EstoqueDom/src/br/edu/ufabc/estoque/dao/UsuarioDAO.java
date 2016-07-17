@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-import br.edu.ufabc.progradweb.jdbc.ConexaoBD;
-import br.edu.ufabc.progradweb.modelo.Usuario;
+import br.edu.ufabc.estoque.jdbc.ConexaoBD;
+import br.edu.ufabc.estoque.modelo.Usuario;
 
-import br.edu.ufabc.progradweb.cripto.BCrypt;
+import br.edu.ufabc.estoque.cripto.BCrypt;
 
 
 public class UsuarioDAO {

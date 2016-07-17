@@ -9,9 +9,12 @@
 </head>
 <body>
 <body>
-	<h3>Mensagem:</h3>
-	${requestScope.msg}
-	<br><br>
+
+	<p><jsp:include page="/admin/cabecalho.jsp"/></p>
+	<h1>Mensagem:</h1>
+	<p>${requestScope.msg}</p>
+	<p><b>${usuario.usuario}</b>, clique <a href="${pageContext.request.contextPath}/admin/index.jsp">aqui</a> para voltar à sessão.
+	</p>
 
 </body>
 

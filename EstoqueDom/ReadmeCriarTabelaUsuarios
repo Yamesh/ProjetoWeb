@@ -1,0 +1,8 @@
+MySQL:
+CREATE TABLE usuarios (
+id BIGINT NOT NULL AUTO_INCREMENT,
+usuario VARCHAR(255) not null,
+senha VARCHAR(255),
+PRIMARY KEY (id),
+CONSTRAINT UNIQUE (usuario)
+); 

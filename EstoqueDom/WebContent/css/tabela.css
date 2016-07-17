@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+#resultado 
+	{
+	border-collapse: collapse;
+	border: 0.5px;
+	border-color: green;
+	
+	}
+	
+th
+	{
+	background-color: #63b559;
+	color: white;
+	}	
+
+td
+	{
+	text-align: center;
+	}
+	
+	tr:nth-child(even) {background-color: #ffff59}

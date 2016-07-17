@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+
+body {
+	font-size:small;
+	background-color:#f8f8af;}
+
+h1 {color:green; font-size:130%;}
+#menu {list-style-type: none;	
+  		  margin: 0;
+    	  padding: 0;
+    	      	  background-color:#63b559;
+    	      	  width: 250px;}
+#mref {display: block; 
+    	  color:#000000;
+    	  padding: 8px 0 8px 16px;
+   		  text-decoration: none;}
+   		  
+#mref:hover {
+    background-color: #468d3f;
+    font-weight: bold;
+}  
+</style>

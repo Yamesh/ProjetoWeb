@@ -25,7 +25,7 @@
 
 
 
-	<iframe name="frame_meio" src="" id="frame_meio" width=90% height=500px
+	<iframe name="frame_meio" src="" id="frame_meio" width=100% height=600px
 		frameborder=0></iframe>
 
 	<p><jsp:include page="/rodape.jsp" /></p>

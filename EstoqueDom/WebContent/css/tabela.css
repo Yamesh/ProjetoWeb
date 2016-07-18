@@ -3,7 +3,7 @@
 #resultado 
 	{
 	border-collapse: collapse;
-	border: 0.5px;
+	border: 5px;
 	border-color: green;
 	
 	}
@@ -11,12 +11,14 @@
 th
 	{
 	background-color: #63b559;
-	color: white;
+	color: black;
+	padding: 50px 20px 50px 80px;
 	}	
 
 td
 	{
 	text-align: center;
+	padding: 5px 3px 5px 8px;
 	}
 	
-	tr:nth-child(even) {background-color: #ffff59}
+tr:nth-child(even) {background-color: #ffff59}

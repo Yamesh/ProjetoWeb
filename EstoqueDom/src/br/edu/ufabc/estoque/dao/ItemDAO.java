@@ -162,7 +162,7 @@ public class ItemDAO {
 			List<Item> itens = new ArrayList<Item>();
 
 			PreparedStatement stmt;
-			String sql = "select * from estoque order by nome";
+			String sql = "select * from estoque order by id";
 			try {
 				stmt = connection.prepareStatement(sql);
 

@@ -25,7 +25,7 @@
 	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
 	
 	
-	<c:set var="contagem" value="0" />	
+
 	<form action=alteraQuantidades>	
 		<table id="resultado">
 		
@@ -53,11 +53,9 @@
 						<td>
 							<input type="number" name="diminui${contagem}" />
 						</td>	
-						<td><c:out value="${contagem}" /></td>
+						<td><c:out value="${item.id}" /></td>
 					</tr>
-				
-				<c:set var="contagem" value="${contagem+1}" />
-				</c:if>
+					</c:if>
 			</c:forEach>	
 		</table>	
 		

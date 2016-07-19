@@ -46,7 +46,32 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		
+		this.criaTabela(usuario.getUsuario());
 	}
+	
+	//===================================================================	
+	// Cria uma tabela
+	//===================================================================
+	public void criaTabela(String usuario) {
+		String sql = "CREATE TABLE despensapessoal_"+usuario+
+				"(id INT NOT NULL AUTO_INCREMENT, "
+				+ "nome VARCHAR (64), "
+				+ "quantidade DOUBLE, "
+				+ "quantidadeDeSeguranca DOUBLE, "
+				+ "estaEmFalta BOOLEAN, "
+				+ "primary key(id) );";
+		try{
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			System.out.println(stmt.toString());
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+			}
+	}
+	
 	//===================================================================	
 	// verifica se o usuario tem permissao de acesso
 	//===================================================================	
@@ -78,7 +103,7 @@ public class UsuarioDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println(nomeUsuario+" est· cadasdtrado como usu·rio");		// Para debug
+				System.out.println(nomeUsuario+" est√° cadasdtrado como usu√°rio");		// Para debug
 				return true;
 			}
 			
@@ -88,7 +113,7 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		System.out.println(nomeUsuario+" n„o est· cadasdtrado como usu·rio");			// Para debug
+		System.out.println(nomeUsuario+" n√£o est√° cadasdtrado como usu√°rio");			// Para debug
 		return false;
 	}
 	//===================================================================	

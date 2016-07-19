@@ -27,7 +27,8 @@
 	<p>			<label>Em falta?</label>
 			<input type="checkbox" name="emFalta" value="true">	
 	</p>			
-			<input type="hidden" name="opcao" value="InsereItem" />	
+			<input type="hidden" name="opcao" value="InsereItemComUsuario" />	
+			<input type="hidden" name="usuario" value="${usuario.usuario}" />
 	<p>			<input type="submit" value="Gravar" /> </p>
 		</form>
 

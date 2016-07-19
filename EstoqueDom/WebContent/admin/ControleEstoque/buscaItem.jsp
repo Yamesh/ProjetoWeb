@@ -20,7 +20,7 @@
 
 	<h1>Resultados da Busca</h1>
 		
-	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
+	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 		
 		
 	<table id="resultado">
@@ -32,7 +32,7 @@
 		</tr>
 	
 	<c:if test="${param.opcaoBusca == 'todos'}">
-			<c:forEach var="item" items="${bd.lista}">
+			<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
 			<tr>
 			 	<td>${item.nome}</td>
 			 	<td>${item.quantidade}</td>
@@ -47,7 +47,7 @@
 	</c:if>
 	
 	<c:if test="${param.opcaoBusca == 'nome'}">
-	    <c:forEach var="item" items="${bd.acharItemPeloNome(param.nomeBusca)}">
+	    <c:forEach var="item" items="${bd.acharItemPeloNome(usuario.usuario, param.nomeBusca)}">
 			
 			<tr>
 				<td>${item.nome}</td>

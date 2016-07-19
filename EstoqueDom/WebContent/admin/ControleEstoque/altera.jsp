@@ -24,7 +24,7 @@
 <h1> Altere um Aluno</h1>
 		
 	<div class="lista">
-		<p><jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" /></p>
+		<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 		
 		<table id="resultado">
 		
@@ -32,13 +32,13 @@
 				<th>ID</th>
 				<th>Nome</th>
 				<th>Quantidade</th>
-				<th>Quantidade<br>Crítica</th>
-				<th>Excluir?</th>
+				<th>Quantidade Crítica</th>
+				<th>Em Falta?</th>
 				
 			</tr>
-				<c:forEach var="item" items="${bd.lista}">
-				 <tr  id="row_${item.id}">
-					 	<td><input type="radio" name="group1" value="${item.id}"  onClick="copiaDados(value)">${item.id}</td>
+				<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
+				 <tr>
+					 	<td>${item.id}</td>
 					 	<td>${item.nome}</td>
 					 	<td>${item.quantidade}</td>
 						<td>${item.quantidadeCrítica}</td>
@@ -46,7 +46,6 @@
 							<c:if test="${item.emFalta}">Sim</c:if>
 							<c:if test="${!item.emFalta}">Não</c:if>
 						</td>
-						<td align="center"><a href="#" id="${item.id}" onclick="removePorId(id)">Excluir</a></td>
 					</tr>
 			</c:forEach>	
 		</table>	
@@ -55,34 +54,30 @@
 	<br>
 	
 	<div class="principal">	
-		<form id="formulario" action="../../controller" method="post">
-			
-			<p>	
-			<label>Id: </label>
-			<input type="text" id="id" name="id" />		
-			</p>
-			
+		<form action="../../controller" method="post">
 			<p>
-				<label> Nome:</label>
-				<input type="text" id="nome" name="nome" />
+				<label>Nome:</label>
+				<input type="text" name="nome" />
 			</p>
 			<p>			
 				<label>Quantidade:</label>
-				<input type="text" id="qtde" name="qtde" />
+				<input type="number" name="qtde" />
 			</p>			
 			<p>
 				<label>Quantidade Crítica:</label>
-				<input type="text" id="qtdeC" name="qtdeC" />	
+				<input type="number" name="qtdeC" />	
 			</p>
+			<p>
+				<label>Em falta?</label>
+				<input type="checkbox" name="emFalta" value="true">	
+			</p>			
 	
+<p>			<label>Id: </label>
+			<input type="text" name="id" /></p>
 
-
-<p>			<input type="hidden" name="opcao" value="AlteraItem" id="opcao" />
+<p>			<input type="hidden" name="opcao" value="AlteraItemComUsuario" />
 			<input type="submit" value="Gravar" /> </p>
 		</form>
 	</div>
-	
-<script type="application/javascript" src="../../scripts/buscador.js"></script>
-
 </body>
 </html>

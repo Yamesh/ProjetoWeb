@@ -24,7 +24,7 @@
 <body>
 <h1>Remova um item</h1>
 	<div class="lista">
-		<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
+		<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 		
 		<table id="resultado">
 		
@@ -36,7 +36,7 @@
 				<th>Em Falta?</th>
 				
 			</tr>
-				<c:forEach var="item" items="${bd.lista}">
+				<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
 				 <tr>
 					 	<td>${item.id}</td>
 					 	<td>${item.nome}</td>

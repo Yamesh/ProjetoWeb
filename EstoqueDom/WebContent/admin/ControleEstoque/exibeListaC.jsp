@@ -22,10 +22,10 @@
 
 	<h1>Lista de Itens</h1>
 		
-	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
+	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 	
 	
-
+	<c:set var="contagem" value="0" />	
 	<form action=alteraQuantidades>	
 		<table id="resultado">
 		
@@ -40,7 +40,7 @@
 			</tr>
 	
 	
-			<c:forEach var="item" items="${bd.lista}">
+			<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
 				<c:set var="teste" scope="session" value = "${item.quantidadeCrítica - item.quantidade}" /><br>
 				<c:if test="${teste>0}">
 					 <tr>
@@ -53,9 +53,11 @@
 						<td>
 							<input type="number" name="diminui${contagem}" />
 						</td>	
-						<td><c:out value="${item.id}" /></td>
+						<td><c:out value="${contagem}" /></td>
 					</tr>
-					</c:if>
+				
+				<c:set var="contagem" value="${contagem+1}" />
+				</c:if>
 			</c:forEach>	
 		</table>	
 		

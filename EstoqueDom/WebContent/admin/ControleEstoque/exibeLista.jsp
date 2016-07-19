@@ -22,28 +22,26 @@
 
 	<h1>Lista de Itens</h1>
 		
-	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
+	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 	
-	<div>
-	<form id="formulario" action="../../controller" method="post">	
+	
+	<c:set var="contagem" value="0" />	
+	<form action=alteraQuantidades>	
 		<table id="resultado">
 		
 			<tr style="black">
-				<th>ID </th>
 				<th>Nome</th>
 				<th>Quantidade</th>
-				<th>Quantidade <br> Crítica</th>
-				<th>Em <br> Falta?</th>
-				<th>Alterar</th>
-				<th>Acrescentar ou<br>Subtrair</th>
-				<th>Excluir</th>
-				
+				<th>Quantidade Crítica</th>
+				<th>Em Falta?</th>
+				<th>Acrescentar</th>
+				<th>Diminuir</th>
+				<th>Indice</th>
 			</tr>
 	
 	
-			<c:forEach var="item" items="${bd.lista}">
-				<tr  id="row_${item.id}">
-					 	<td><input type="radio" name="group1" value="${item.id}"  onClick="copiaDados(value)">${item.id}</td>
+			<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
+			<tr>
 					 	<td>${item.nome}</td>
 					 	<td>${item.quantidade}</td>
 						<td>${item.quantidadeCrítica}</td>
@@ -52,40 +50,25 @@
 							<c:if test="${item.emFalta}">Sim</c:if>
 							<c:if test="${!item.emFalta}">Não</c:if>
 						</td>
-						
 						<td>
-							<input type="number" id="altera${item.id}" name="altera${item.id}" onChange="copiaDados(${item.id})"/>
+							<input type="number" name="aumenta${contagem}" />
 						</td>
 						<td>
-							<select id="operacao${item.id}" name="operacao" onBlur="copiaDados(${item.id})">
-							<option value="soma">Acrescenta</option>
-							<option value="subtracao">Retira</option>
-							</select> 
+							<input type="number" name="diminui${contagem}" />
 						</td>	
-						<td align="center"><a href="#" id="${item.id}" onclick="removePorId(id)">Excluir</a></td>
-					
-				</tr>
+						<td><c:out value="${contagem}" /></td>
+		
+	
+			</tr>
+			<c:set var="contagem" value="${contagem+1}" />
+			
 			</c:forEach>	
 		</table>	
 		
-		</div>
+		<input type="hidden" name="opcao" value="AlteraItem" />
+		<input type="submit" value="Gravar" /> 
 		
-		<div class="principal">	
-		<form id="formulario" action="../../controller" method="post">
-			
-			<p>	
-			<label>Id: </label>
-			<input type="text" id="id" name="id" />		
-			</p>
-			<input type="hidden" id="nome" name="nome" value="vazio" />
-			<input type="hidden" id="qtde" name="qtde"  value="vazio" />
-			<input type="hidden" id="qtdeC" name="qtdeC" value="vazio""/>	
-			<input type="hidden" name="opcao" value="AlteraItem" id="opcao" />
-			<input type="submit" value="Gravar" /> </p>
-		
-	</form>	
-	
-<script src="../../scripts/exibidor.js"></script>		
+	</form>		
 </body>
 
 </html>

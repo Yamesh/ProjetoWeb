@@ -1,8 +1,0 @@
-@CHARSET "ISO-8859-1";
- 
-<style type="text/css">
-form  { display: table;      }
-p     { display: table-row;  }
-label { display: table-cell; }
-input { display: table-cell; }
-</style>

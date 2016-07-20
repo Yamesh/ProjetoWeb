@@ -11,10 +11,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import br.edu.ufabc.progradweb.jdbc.ConexaoBD;
+import br.edu.ufabc.estoque.jdbc.ConexaoBD;
 
 
-public class FiltroBD implements Filter{
+public class FiltroBD implements Filter {
 
 	
 	public void doFilter(ServletRequest request, ServletResponse response,

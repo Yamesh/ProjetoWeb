@@ -1,10 +1,11 @@
-package br.edu.ufabc.progradweb.acao;
+package br.edu.ufabc.estoque.acao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import br.edu.ufabc.progradweb.modelo.Usuario;
-import br.edu.ufabc.progradweb.dao.UsuarioDAO;
+
+import br.edu.ufabc.estoque.dao.UsuarioDAO;
+import br.edu.ufabc.estoque.modelo.Usuario;
 
 public class CadastraUsuario implements Acao {
 	
@@ -63,7 +64,7 @@ public class CadastraUsuario implements Acao {
 				req.setAttribute("msg", saida);
 				
 				//(2) Redireciona
-				RequestDispatcher redirecionador = req.getRequestDispatcher("/admin/sucesso.jsp");
+				RequestDispatcher redirecionador = req.getRequestDispatcher("sucessoLogin.jsp");
 				redirecionador.forward(req, resp);
 			}
 				

@@ -2,12 +2,17 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!-- --------------------importações-------------------- -->
+<%@ page import="br.edu.ufabc.estoque.modelo.Item" %>
+<!-- --------------------/importações-------------------- -->
+
 <html>
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
-	<link rel="stylesheet" type="text/css" href="../css/tabela.css">
+	<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
+	<link rel="stylesheet" type="text/css" href="../../css/tabela.css">
 	
 	<title>Busca</title>
 </head>
@@ -15,7 +20,7 @@
 
 	<h1>Resultados da Busca</h1>
 		
-	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAO" />
+	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 		
 		
 	<table id="resultado">
@@ -27,7 +32,7 @@
 		</tr>
 	
 	<c:if test="${param.opcaoBusca == 'todos'}">
-			<c:forEach var="item" items="${bd.lista}">
+			<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
 			<tr>
 			 	<td>${item.nome}</td>
 			 	<td>${item.quantidade}</td>
@@ -42,7 +47,7 @@
 	</c:if>
 	
 	<c:if test="${param.opcaoBusca == 'nome'}">
-	    <c:forEach var="item" items="${bd.acharItemPeloNome(param.nomeBusca)}">
+	    <c:forEach var="item" items="${bd.acharItemPeloNome(usuario.usuario, param.nomeBusca)}">
 			
 			<tr>
 				<td>${item.nome}</td>

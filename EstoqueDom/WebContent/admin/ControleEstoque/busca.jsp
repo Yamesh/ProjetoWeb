@@ -3,7 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Controle do Estoque</title>
-<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
+<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
+<link rel="stylesheet" type="text/css" href="../../css/tabela.css">
 </head>
 <body>
 <h1>Buscar Itens</h1>

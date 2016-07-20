@@ -5,16 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sucesso!!!</title>
-<link rel="stylesheet" type="text/css" href="Estilo.css">
+<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
 </head>
 <body>
 <body>
-
-	<p><jsp:include page="/admin/cabecalho.jsp"/></p>
-	<h1>Mensagem:</h1>
+	<h3>Mensagem:</h3>
 	${requestScope.msg}
-	<br><br>
-	<jsp:include page="/admin/rodape.jsp"/>
+	<br><br>	
+	
+	
 </body>
 
 </body>

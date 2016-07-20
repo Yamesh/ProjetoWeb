@@ -39,15 +39,8 @@ public class ControllerServlet extends HttpServlet{
 				Class<?> classe = Class.forName(nomeDaClasse);
 				Acao acao = (Acao) classe.newInstance();
 
-				textoDeSaida=acao.executa(req, resp);
-			
-				//escreve uma msg 
-				req.setAttribute("msg", textoDeSaida);
-				
-				//Redireciona para /sucesso.jsp
-				RequestDispatcher rd = req.getRequestDispatcher("/sucesso.jsp");
-				rd.forward(req, resp);
-
+				acao.executa(req, resp);
+		
 			
 			
 			} catch (Exception e) {

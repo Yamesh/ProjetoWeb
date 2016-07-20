@@ -5,6 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface Acao {
 	
-		public String executa(HttpServletRequest req, HttpServletResponse resp)
+		public void executa(HttpServletRequest req, HttpServletResponse resp)
 				throws Exception;
 	}

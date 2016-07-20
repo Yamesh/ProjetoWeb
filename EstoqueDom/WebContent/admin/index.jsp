@@ -5,22 +5,29 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Controle de Estoque Doméstico</title>
-	<link rel="stylesheet" type="text/css" href="css/Estilo.css">
+	<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
 
 </head>
 <body>
-<h1>Funções Principais</h1>
+	<p><jsp:include page="/admin/cabecalho.jsp" /></p>
+
+	<h1>Funções Principais</h1>
 
 
-<ul id="menu">	
-	<li><a id="mref" href="ControleEstoque/estoque.jsp" target="frame_meio">Estoque</a></li>
-	<li><a id="mref"  href="ControleEstoque/exibeListaC.jsp" target="frame_meio">Compras</a></li>
-</ul>	
+	<ul id="menu">
+		<li><a id="mref"
+			href="${pageContext.request.contextPath}/admin/ControleEstoque/estoque.jsp"
+			target="frame_meio">Estoque</a></li>
+		<li><a id="mref"
+			href="${pageContext.request.contextPath}/admin/ControleEstoque/exibeListaC.jsp"
+			target="frame_meio">Compras</a></li>
+	</ul>
 
 
 
-<iframe name="frame_meio" src="" id="frame_meio" width=90% height=500px frameborder=0></iframe>
+	<iframe name="frame_meio" src="" id="frame_meio" width=100% height=600px
+		frameborder=0></iframe>
 
-
+	<p><jsp:include page="/rodape.jsp" /></p>
 </body>
 </html>

@@ -8,14 +8,12 @@
 <link rel="stylesheet" type="text/css" href="Estilo.css">
 </head>
 <body>
-<p>
-	Esse é um rodapé.
-</p>
+
 <p>
 	<%= new java.util.Date() %>
 </p>
 <p>
-	<a href="welcome.jsp">Voltar </a>
+	<a href="admin/index.jsp">Voltar </a>
 </p>
 
 </body>

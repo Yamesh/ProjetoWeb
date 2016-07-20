@@ -1,4 +1,4 @@
-package br.edu.ufabc.progradweb.modelo;
+package br.edu.ufabc.estoque.modelo;
 
 public class Usuario {
 	private String usuario;

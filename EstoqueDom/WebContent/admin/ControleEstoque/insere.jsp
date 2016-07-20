@@ -4,14 +4,14 @@
 		<meta charset="ISO-8859-1">
 		
 		<title>Novo Item</title>
-		<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
-		<link rel="stylesheet" type="text/css" href="../css/form.css">
+		<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
+		<link rel="stylesheet" type="text/css" href="../../css/form.css">
     
 </head>
 <body>
 	<h1>Insira um novo Item</h1>
 
-		<form action="../controller" method="post">
+		<form action="../../controller" method="post">
 	<p>
 			<label>Nome:</label>
 			<input type="text" name="nome" />
@@ -27,7 +27,8 @@
 	<p>			<label>Em falta?</label>
 			<input type="checkbox" name="emFalta" value="true">	
 	</p>			
-			<input type="hidden" name="opcao" value="InsereItem" />	
+			<input type="hidden" name="opcao" value="InsereItemComUsuario" />	
+			<input type="hidden" name="usuario" value="${usuario.usuario}" />
 	<p>			<input type="submit" value="Gravar" /> </p>
 		</form>
 

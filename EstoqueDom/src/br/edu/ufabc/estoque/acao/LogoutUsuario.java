@@ -1,4 +1,4 @@
-package br.edu.ufabc.progradweb.acao;
+package br.edu.ufabc.estoque.acao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

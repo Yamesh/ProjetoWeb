@@ -5,17 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="Estilo.css">
+<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
 </head>
 <body>
-<p>
-	Esse é um rodapé.
-</p>
+
 <p>
 	<%= new java.util.Date() %>
 </p>
+
 <p>
-	<a href="welcome.jsp">Voltar </a>
+	<a href="index.jsp">Voltar </a>
 </p>
 
 </body>

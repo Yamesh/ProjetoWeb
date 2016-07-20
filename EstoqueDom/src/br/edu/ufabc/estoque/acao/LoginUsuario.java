@@ -1,4 +1,4 @@
-package br.edu.ufabc.progradweb.acao;
+package br.edu.ufabc.estoque.acao;
 
 import java.sql.Connection;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.edu.ufabc.progradweb.dao.UsuarioDAO;
-import br.edu.ufabc.progradweb.modelo.Usuario;
+import br.edu.ufabc.estoque.dao.UsuarioDAO;
+import br.edu.ufabc.estoque.modelo.Usuario;
 
 public class LoginUsuario implements Acao {
 

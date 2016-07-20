@@ -1,10 +1,10 @@
 package br.edu.ufabc.estoque.dao;
 
-//Pacotes prÛprios
+//Pacotes pr√≥prios
 import br.edu.ufabc.estoque.jdbc.ConexaoBD;
 import br.edu.ufabc.estoque.modelo.Item;
 
-//Pacotes para conex„o
+//Pacotes para conex√£o
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -13,26 +13,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ItemDAO {
+public class ItemDAOcomUsuario {
 
 	
 	private Connection connection;
-		
+	String usuario;	
 	
 	/**
-	 * Construtor da classe cria uma conex„o
+	 * Construtor da classe cria uma conex√£o
 	 */
-	public ItemDAO() {
+	public ItemDAOcomUsuario() {
 			this.connection = new ConexaoBD().getConnection();
+			this.usuario = "adm";
 		}
 		
-	public ItemDAO(Connection conexao) {
+	public ItemDAOcomUsuario(String usuario, Connection conexao) {
 		this.connection = conexao;
+		this.usuario = usuario;
 	}
 	
 	
 	/**
-	 * Fecha a conex„o. 
+	 * Fecha a conex√£o. 
 	 */
 	public void fechaConexao() {
 			try {
@@ -44,26 +46,28 @@ public class ItemDAO {
 	
 
 	
-/*		Criar cÛdigo para que cada usu·rio tenha sua prÛpria tabela		
+/*		Criar c√≥digo para que cada usu√°rio tenha sua pr√≥pria tabela		
  * 
  * 		
  */
 	
 //========================================================================			
-		public void insere(Item qualquer) {
+		public void insere(String usuario, Item qualquer) {
 			
-			//determina o statement que ser· enviado
-			String sql = "insert into estoque (nome,qtde,qtdeC,emFalta) values (?,?,?,?)";
+			//determina o statement que ser√° enviado
+			String sql = "insert into despensapessoal_"+usuario+" (nome,quantidade,quantidadeDeSeguranca,estaEmFalta) values (?,?,?,?)";
 			
 			try{
 			//PREPARAR O STATEMENT
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
+		
 			stmt.setString(1, qualquer.getNome());
 			stmt.setDouble(2, qualquer.getQuantidade());
-			stmt.setDouble(3, qualquer.getQuantidadeCrÌtica());
+			stmt.setDouble(3, qualquer.getQuantidadeCr√≠tica());
 			stmt.setBoolean(4, qualquer.isEmFalta());
 			
+		
 			//EXECUTA
 			stmt.execute();
 			stmt.close();
@@ -74,8 +78,8 @@ public class ItemDAO {
 		
 		}
 //===================================================================		
-		public void remove(Item qualquer) {
-			String sql = "delete from estoque where id=?";
+		public void remove(String usuario, Item qualquer) {
+			String sql = "delete from despensapessoal_"+usuario+" where id=?";
 			
 			try {
 				PreparedStatement stmt = connection.prepareStatement(sql);
@@ -90,16 +94,16 @@ public class ItemDAO {
 		}
 		
 //========================================================================
-		public void altera(Item qualquer) {
-			String sql = "update estoque set nome=?, qtde=?, qtdeC=?, emFalta=? where id=?";
+		public void altera(String usuario, Item qualquer) {
+			String sql = "update despensapessoal_"+usuario+" set nome=?, qtde=?, qtdeC=?, emFalta=? where id=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			//Ser„o alterados
+			//Ser√£o alterados
 			stmt.setString(1, qualquer.getNome());
 			stmt.setDouble(2, qualquer.getQuantidade());
-			stmt.setDouble(3, qualquer.getQuantidadeCrÌtica());
+			stmt.setDouble(3, qualquer.getQuantidadeCr√≠tica());
 			stmt.setBoolean(4, qualquer.isEmFalta());
 			
 			//Quando id = ...
@@ -115,12 +119,12 @@ public class ItemDAO {
 	}
 //========================================================================
 		// faz a busca de item(s) pelo nome do item
-		public List<Item> acharItemPeloNome(String nome) {
+		public List<Item> acharItemPeloNome(String usuario, String nome) {
 			
 			List<Item> itens = new ArrayList<Item>();
 
 			PreparedStatement stmt;
-			String sql = "select * from estoque where nome=?";
+			String sql = "select * from despensapessoal_"+usuario+" where nome=?";
 			try {
 				stmt = connection.prepareStatement(sql);
 				
@@ -138,7 +142,7 @@ public class ItemDAO {
 					qualquer.setId(rs.getLong("id"));
 					qualquer.setNome(rs.getString("nome"));
 					qualquer.setQuantidade(rs.getDouble("qtde"));
-					qualquer.setQuantidadeCrÌtica(rs.getDouble("qtdeC"));
+					qualquer.setQuantidadeCr√≠tica(rs.getDouble("qtdeC"));
 					qualquer.setEmFalta(rs.getBoolean("emFalta"));
 					
 					//adiciona o item criado na lista itens
@@ -158,11 +162,11 @@ public class ItemDAO {
 		}
 //========================================================================
 		// devolve uma lista com todos itens
-		public List<Item> getLista() {
+		public List<Item> getLista(String usuario) {
 			List<Item> itens = new ArrayList<Item>();
 
 			PreparedStatement stmt;
-			String sql = "select * from estoque order by id";
+			String sql = "select * from despensapessoal_"+usuario+" order by id";
 			try {
 				stmt = connection.prepareStatement(sql);
 
@@ -173,7 +177,7 @@ public class ItemDAO {
 					qualquer.setId(rs.getLong("id"));
 					qualquer.setNome(rs.getString("nome"));
 					qualquer.setQuantidade(rs.getDouble("qtde"));
-					qualquer.setQuantidadeCrÌtica(rs.getDouble("qtdeC"));
+					qualquer.setQuantidadeCr√≠tica(rs.getDouble("qtdeC"));
 					qualquer.setEmFalta(rs.getBoolean("emFalta"));
 
 					itens.add(qualquer);
@@ -185,7 +189,7 @@ public class ItemDAO {
 				
 				
 			} catch (SQLException e) {
-				System.out.println("ERRO NA OBTEN«√O DO ITEM");
+				System.out.println("ERRO NA OBTEN√á√ÉO DO ITEM");
 				throw new RuntimeException(e);
 		
 			}

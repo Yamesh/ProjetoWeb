@@ -3,9 +3,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!-- --------------------importações-------------------- -->
+<!-- --------------------importaÃ§Ãµes-------------------- -->
 <%@ page import="br.edu.ufabc.estoque.modelo.Item" %>
-<!-- --------------------/importações-------------------- -->
+<!-- --------------------/importaÃ§Ãµes-------------------- -->
 
 
 
@@ -13,26 +13,30 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="../../css/Estilo.css">
-	<link rel="stylesheet" type="text/css" href="../../css/tabela.css">
+
+<!-- CSS -->					
+<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="">
+<!-- CSS -->
 	
 	<title>Lista</title>
 </head>
 <body>
 
-	<h1>Lista de Itens</h1>
-		
+	
 	<jsp:useBean id="bd" class="br.edu.ufabc.estoque.dao.ItemDAOcomUsuario" />
 	
+	<h1>Lista de ItensB</h1>
+		
 	
-	<c:set var="contagem" value="0" />	
 	<form action=alteraQuantidades>	
 		<table id="resultado">
 		
 			<tr style="black">
 				<th>Nome</th>
 				<th>Quantidade</th>
-				<th>Quantidade Crítica</th>
+				<th>Quantidade CrÃ­tica</th>
 				<th>Em Falta?</th>
 				<th>Acrescentar</th>
 				<th>Diminuir</th>
@@ -41,22 +45,20 @@
 	
 	
 			<c:forEach var="item" items="${bd.todosOsItens(usuario.usuario)}">
-				<c:set var="teste" scope="session" value = "${item.quantidadeCrítica - item.quantidade}" /><br>
+				<c:set var="teste" scope="session" value = "${item.quantidadeCrÃ­tica - item.quantidade}" />
 				<c:if test="${teste>0}">
 					 <tr>
 					 	<td>${item.nome}</td>
 					 	<td>${item.quantidade}</td>
-						<td>${item.quantidadeCrítica}</td>
+						<td>${item.quantidadeCrÃ­tica}</td>
 						<td>
-							<input type="number" name="aumenta${contagem}" />
+							<input type="number" name="aumenta${item.id}" />
 						</td>
 						<td>
-							<input type="number" name="diminui${contagem}" />
+							<input type="number" name="diminui${item.id}" />
 						</td>	
-						<td><c:out value="${contagem}" /></td>
+						<td><c:out value="${item.id}" /></td>
 					</tr>
-				
-				<c:set var="contagem" value="${contagem+1}" />
 				</c:if>
 			</c:forEach>	
 		</table>	

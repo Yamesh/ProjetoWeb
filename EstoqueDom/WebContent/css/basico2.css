@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-size: small;
+	background-color:#ffffa6;}
+
+h1 {color: green; font-size:1.3em;}
+h2 {color: green; font-size: 1.2em;}
+
+
+div {display: block;}
+
+.mostra{
+	border-style: solid;
+}
+
+.menu {
+		  list-style-type: none;	
+  		  margin: 0;
+    	  padding: 0;
+    	  background-color:#63b559;
+    	  width: 100%;}
+
+
+
+.menu a {
+	display: block; 
+    color:#000000;
+    padding: 14px 18px 14px 18px;
+   	text-decoration: none;
+   	float: left;
+   	background-color:#63b559;
+   	border: 1px solid #397333;
+   		    }
+   		  
+  
+   		  
+.menu a:hover {
+	background-color: #468d3f;
+    font-weight: bold;
+} 
+
+
+
+#rodape	{
+	size: tiny;
+	margin-top: 30px;
+	
+}

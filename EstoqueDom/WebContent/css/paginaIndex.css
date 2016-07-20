@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+.operacao
+	{
+	margin: 10px;
+	display: block;
+	border: thin solid;
+	padding: 10px 30px;
+	
+	}
+	
+	
+#frame{
+	float: right;
+	width: 300px;
+	}	

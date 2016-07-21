@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <!-- CSS -->					
-<link rel="stylesheet" type="text/css" href="./estilos/Estilo.css">
-<link rel="stylesheet" type="text/css" href="Formularios.css">
+<link rel="stylesheet" type="text/css" href="css/basico.css">
+<link rel="stylesheet" type="text/css" href="css/formularios.css">
 <!-- CSS -->
+
 <script type="text/javascript" src="./scripts/loginEcadastro.js"></script>
 <title>Página de Login</title>
 </head>
@@ -31,6 +33,8 @@
 	
 	<a href=cadastraUsuario.jsp>Não é cadastrado? Cadastre-se aqui</a>
 	
-	<jsp:include page="rodape.jsp"/>
+	<div id="rodape">
+	<jsp:include page="rodape.jsp" />
+	</div>
 </body>
 </html>

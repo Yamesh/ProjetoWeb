@@ -1,0 +1,42 @@
+@CHARSET "ISO-8859-1";
+
+h1 {color:green; font-size:25px;}
+h2 {color:green; font-size: 20px;}
+body {background-color:#ffffa6;}
+
+
+
+div {display: block;}
+
+#menu {
+	list-style-type: none;	
+  		  margin: 0;
+    	  padding: 0;
+    	  background-color:#63b559;
+    	  width: 100%;}
+
+
+#mref {
+	display: block; 
+    color:#000000;
+    padding: 14px 18px 14px 18px;
+   	text-decoration: none;
+   	float: left;
+   	background-color:#63b559;
+   	border: 1px solid #397333;
+   		  }
+   		  
+  
+   		  
+#mref:hover {
+    background-color: #468d3f;
+    font-weight: bold;
+}  
+
+
+
+#rodape	{
+	size: tiny;
+	margin-top: 30px;
+	
+}

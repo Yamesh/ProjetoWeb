@@ -1,0 +1,3 @@
+A classe ItemDAOcomUsuário está considerando que o modelo ITEM não tem acentuação em Crítica.
+  Corrigir jsp: listaIndex(refere-se à quantidadeCrÍtica uma vez) e listaIndexC(faz a referencia 2 vezes);
+  

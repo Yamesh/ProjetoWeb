@@ -3,6 +3,7 @@ package br.edu.ufabc.estoque.dao;
 //Pacotes próprios
 import br.edu.ufabc.estoque.jdbc.ConexaoBD;
 import br.edu.ufabc.estoque.modelo.Item;
+import br.edu.ufabc.estoque.modelo.Usuario;
 
 //Pacotes para conexão
 import java.sql.Connection;
@@ -64,7 +65,7 @@ public class ItemDAOcomUsuario {
 		
 			stmt.setString(1, qualquer.getNome());
 			stmt.setDouble(2, qualquer.getQuantidade());
-			stmt.setDouble(3, qualquer.getQuantidadeCrítica());
+			stmt.setDouble(3, qualquer.getQuantidadeCritica());
 			stmt.setBoolean(4, qualquer.isEmFalta());
 			
 		
@@ -95,7 +96,7 @@ public class ItemDAOcomUsuario {
 		
 //========================================================================
 		public void altera(String usuario, Item qualquer) {
-			String sql = "update despensapessoal_"+usuario+" set nome=?, qtde=?, qtdeC=?, emFalta=? where id=?";
+			String sql = "update despensapessoal_"+usuario+" set nome=?, quantidade=?, quantidadeDeSeguranca=?, estaEmFalta=? where id=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -103,7 +104,7 @@ public class ItemDAOcomUsuario {
 			//Serão alterados
 			stmt.setString(1, qualquer.getNome());
 			stmt.setDouble(2, qualquer.getQuantidade());
-			stmt.setDouble(3, qualquer.getQuantidadeCrítica());
+			stmt.setDouble(3, qualquer.getQuantidadeCritica());
 			stmt.setBoolean(4, qualquer.isEmFalta());
 			
 			//Quando id = ...
@@ -141,9 +142,9 @@ public class ItemDAOcomUsuario {
 					//usa essa referencia para criar um item com os dados obtidos do BD
 					qualquer.setId(rs.getLong("id"));
 					qualquer.setNome(rs.getString("nome"));
-					qualquer.setQuantidade(rs.getDouble("qtde"));
-					qualquer.setQuantidadeCrítica(rs.getDouble("qtdeC"));
-					qualquer.setEmFalta(rs.getBoolean("emFalta"));
+					qualquer.setQuantidade(rs.getDouble("quantidade"));
+					qualquer.setQuantidadeCritica(rs.getDouble("quantidadeDeSeguranca"));
+					qualquer.setEmFalta(rs.getBoolean("estaEmFalta"));
 					
 					//adiciona o item criado na lista itens
 					itens.add(qualquer);
@@ -176,9 +177,9 @@ public class ItemDAOcomUsuario {
 					Item qualquer = new Item();
 					qualquer.setId(rs.getLong("id"));
 					qualquer.setNome(rs.getString("nome"));
-					qualquer.setQuantidade(rs.getDouble("qtde"));
-					qualquer.setQuantidadeCrítica(rs.getDouble("qtdeC"));
-					qualquer.setEmFalta(rs.getBoolean("emFalta"));
+					qualquer.setQuantidade(rs.getDouble("quantidade"));
+					qualquer.setQuantidadeCritica(rs.getDouble("quantidadeDeSeguranca"));
+					qualquer.setEmFalta(rs.getBoolean("estaEmFalta"));
 
 					itens.add(qualquer);
 				}
@@ -197,6 +198,15 @@ public class ItemDAOcomUsuario {
 			
 			return itens;
 		}
+		
+		//========================================================================
+				// devolve uma lista com todos itens
+				public List<Item> todosOsItens(String nomeDeUsuario) {
+					
+					return this.getLista(nomeDeUsuario);
+					
+				}
+				
 	}
 		
 	
